@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "EncryptMessage";
+}
+@using (Html.BeginForm())
+{
+    <div>
+        <div>
+            <label>
+                PGP Public Key(paste the public key of the recipient you are about to send a message)</label>
+            @Html.TextArea("PublicKey", new { rows = "15", cols = "10", Class = "col100", style = "font-size: 12px;" })
+        </div>
+        <div>
+            <label>
+                Message to Encrypt (enter the message text you wish encrypt)</label>
+            @Html.TextArea("Message", new { rows = "15", cols = "10", Class = "col100", style = "font-size: 12px;" })
+        </div>
+        <div>
+            <input type="submit" name="submit" value="Encrypt Message" />
+        </div>
+        <div>
+            @if (!string.IsNullOrEmpty(@ViewBag.EncryptedMessage))
+            {
+                <label>
+                    Encrypted Message</label>
+                <textarea rows="15" id="EncryptedMessage" cols="10" class="col100" style="font-size: 12px;">@ViewBag.EncryptedMessage</textarea>
+            }
+        </div>
+    </div>
+}
+<style type="text/css">
+    
+</style>

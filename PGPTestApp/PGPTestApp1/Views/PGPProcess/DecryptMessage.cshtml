@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "DecryptMessage";
+}
+@using (Html.BeginForm())
+{
+    <div>
+        <div>
+            <label>
+                PGP Private Key (paste your private key - you also need to supply your PGP passphrase
+                to unlock your private key)</label>
+            @Html.TextArea("PrivateKey", new { rows = "15", cols = "10", Class = "col100", style = "font-size: 12px;" })
+        </div>
+        <div>
+            <label>
+                PGP-Key Password / Passphrase:
+            </label>
+            @Html.TextBox("Password")
+        </div>
+        <div>
+            <label>
+                Message to Decrypt (enter the message text you wish encrypt)</label>
+            @Html.TextArea("EncryptedMessage", new { rows = "15", cols = "10", Class = "col100", style = "font-size: 12px;" })
+        </div>
+        <div>
+            <input type="submit" name="submit" value="Decrypt Message" />
+        </div>
+        <div>
+            @if (!string.IsNullOrEmpty(@ViewBag.DecryptedMessage))
+            {
+                <label>
+                    Decrypted Message</label>
+                <textarea rows="15" id="DecryptedMessage" cols="10" class="col100" style="font-size: 12px;">@ViewBag.DecryptedMessage</textarea>
+            }
+        </div>
+    </div>
+}
+<style type="text/css">
+    
+</style>

@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "EmailRegister";
+}
+@using (Html.BeginForm())
+{
+    <div id="divOuter">
+        <div>
+            <div>
+                <label class="lblLeft">
+                    Email Address</label>
+                @Html.TextBox("Email")
+            </div>
+            <div>
+                <label class="lblLeft">
+                    Password</label>
+                @Html.Password("Password")
+            </div>
+            <div>
+                <input type="submit" name="submit" value="Generate PGP Keys" />
+            </div>
+        </div>
+        <div>
+            @if (!string.IsNullOrEmpty(ViewBag.PrivateKey))
+            {
+                <div class="col50">
+                    <label class="col100">
+                        Private Key</label>
+                    <textarea rows="20" cols="10" class="col100" style="font-size: 12px;">@ViewBag.PrivateKey</textarea>
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(ViewBag.PublicKey))
+            {
+                <div class="col50">
+                    <label class="col100">
+                        Public Key</label>
+                    <textarea rows="20" cols="10" class="col100" style="font-size: 12px;">@ViewBag.PublicKey</textarea>
+                </div>
+            }
+        </div>
+    </div>
+}
+<style type="text/css">
+    #divOuter
+    {
+        width: 100%;
+        float: left;
+    }
+    #divOuter > div > div
+    {
+        width: 100%;
+        float: left;
+    }
+    #divOuter > div
+    {
+        width: 100%;
+        float: left;
+    }
+    label.lblLeft
+    {
+        width: 120px;
+        float: left;
+        padding-top: 8px;
+    }
+</style>
